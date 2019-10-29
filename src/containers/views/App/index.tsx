@@ -4,10 +4,11 @@ import { Switch, Route } from 'react-router-dom'
 import Home from '@views/Home'
 import Page1 from '@views/Page1'
 import NotFound from '@views/NotFound'
+import styles from './index.scss'
 
 function App() {
     return (
-        <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+        <div className={styles.container}>
             <Switch>
                 <Route path="/" exact={true}>
                     <Home />
