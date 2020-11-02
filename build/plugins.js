@@ -1,13 +1,14 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const webpack = require('webpack')
 
 const getClientEnvironment = require('./env.js')
 const env = getClientEnvironment('/')
 
 const definePlugin = new webpack.DefinePlugin(env.stringified)
 
-module.exports = [
+const plugins = [
     new HtmlWebpackPlugin({
         template: 'build/tpl/index.html'
     }),
@@ -18,3 +19,9 @@ module.exports = [
         async: false
     })
 ]
+
+if (process.env.APP_ENV === 'production') {
+    plugins.push(new MiniCssExtractPlugin())
+}
+
+module.exports = plugins

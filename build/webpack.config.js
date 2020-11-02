@@ -1,4 +1,5 @@
 const TsconfigPathsWebpackPlugin = require('tsconfig-paths-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 const plugins = require('./plugins')
 const jsRules = require('./rules/jsRules')
@@ -7,8 +8,13 @@ const fileRules = require('./rules/fileRules')
 const { resolveFromRootDir } = require('./utils')
 
 module.exports = {
+    mode: process.env.APP_ENV,
     entry: {
         app: resolveFromRootDir('src/index.tsx')
+    },
+    devServer: {
+        port: 9000,
+        hot: true
     },
     output: {
         path: resolveFromRootDir('dist'),
@@ -23,6 +29,22 @@ module.exports = {
         plugins: [
             new TsconfigPathsWebpackPlugin({
                 configFile: resolveFromRootDir('tsconfig.json')
+            })
+        ]
+    },
+    optimization: {
+        innerGraph: false,
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                // 匹配需要压缩的文件、可以指定文件夹
+                // 提供include、exclude
+                test: /\.js(\?.*)?$/i,
+                // 默认开启并行提高构建速度
+                parallel: true,
+                terserOptions: {
+                    // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
+                }
             })
         ]
     }

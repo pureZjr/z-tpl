@@ -6,7 +6,7 @@ import Page1 from '@views/Page1'
 import NotFound from '@views/NotFound'
 import styles from './index.scss'
 
-function App() {
+const App: React.FC = () => {
     return (
         <div className={styles.container}>
             <Switch>

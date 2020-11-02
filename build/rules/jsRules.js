@@ -1,8 +1,5 @@
 const tsImportPluginFactory = require('ts-import-plugin')
 
-const { resolveFromRootDir } = require('../utils')
-const theme = require(resolveFromRootDir('theme.js'))
-
 module.exports = [
     {
         test: /\.ts(x?)$/,
@@ -10,8 +7,6 @@ module.exports = [
             {
                 loader: 'awesome-typescript-loader',
                 options: {
-                    useCache: true,
-                    cacheDirectory: resolveFromRootDir('.cache-loader'),
                     transpileOnly: true,
                     getCustomTransformers: () => ({
                         before: [
@@ -35,19 +30,9 @@ module.exports = [
         ]
     },
     {
-        test: /\.less$/,
-        include: [resolveFromRootDir('node_modules')],
-        use: [
-            'style-loader',
-            'css-loader',
-            {
-                loader: 'less-loader',
-                options: {
-                    // 禁用内联js代码，禁止在样式表用js代码
-                    javascriptEnabled: true,
-                    modifyVars: theme
-                }
-            }
-        ]
+        test: /\.m?js/,
+        resolve: {
+            fullySpecified: false
+        }
     }
 ]

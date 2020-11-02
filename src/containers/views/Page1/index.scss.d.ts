@@ -4,5 +4,5 @@ interface CssExports {
   'back': string;
   'container': string;
 }
-declare var cssExports: CssExports;
-export = cssExports;
+export const cssExports: CssExports;
+export default cssExports;

@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { createHashHistory } from 'history'
-import * as styles from './index.scss'
+import styles from './index.scss'
 
 const customHistory = createHashHistory()
 
