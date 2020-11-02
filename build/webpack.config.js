@@ -14,7 +14,8 @@ module.exports = {
     },
     devServer: {
         port: 9000,
-        hot: true
+        hot: true,
+        open: true
     },
     output: {
         path: resolveFromRootDir('dist'),
@@ -31,6 +32,11 @@ module.exports = {
                 configFile: resolveFromRootDir('tsconfig.json')
             })
         ]
+    },
+    // 开启缓存，加快开发环境构建速度
+    cache: {
+        type: 'filesystem',
+        cacheLocation: resolveFromRootDir('.cache')
     },
     optimization: {
         innerGraph: false,
