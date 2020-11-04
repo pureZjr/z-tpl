@@ -1,7 +1,7 @@
 {
-    "name": "aa",
-    "version": "1.0.0",
-    "description": "aa",
+    "name": "{{projectName}}",
+    "version": "{{projectVersion}}",
+    "description": "{{projectDescription}}",
     "author": "z",
     "private": true,
     "dependencies": {
