@@ -5,6 +5,7 @@ const plugins = require('./plugins')
 const jsRules = require('./rules/jsRules')
 const styleRules = require('./rules/styleRules')
 const fileRules = require('./rules/fileRules')
+const cache = require('./cache')
 const { resolveFromRootDir } = require('./utils')
 
 module.exports = {
@@ -33,11 +34,7 @@ module.exports = {
             })
         ]
     },
-    // 开启缓存，加快开发环境构建速度
-    cache: {
-        type: 'filesystem',
-        cacheLocation: resolveFromRootDir('.cache')
-    },
+    cache,
     optimization: {
         innerGraph: false,
         minimize: true,
