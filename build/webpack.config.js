@@ -5,10 +5,9 @@ const plugins = require('./plugins')
 const jsRules = require('./rules/jsRules')
 const styleRules = require('./rules/styleRules')
 const fileRules = require('./rules/fileRules')
-const cache = require('./cache')
 const { resolveFromRootDir } = require('./utils')
 
-module.exports = {
+const config = {
     mode: process.env.APP_ENV,
     entry: {
         app: resolveFromRootDir('src/index.tsx')
@@ -34,7 +33,6 @@ module.exports = {
             })
         ]
     },
-    cache,
     optimization: {
         innerGraph: false,
         minimize: true,
@@ -52,3 +50,13 @@ module.exports = {
         ]
     }
 }
+
+// 开启缓存，加快开发环境构建速度
+if (process.env.NODE_ENV === 'development') {
+    config.cache = {
+        type: 'filesystem',
+        cacheLocation: resolveFromRootDir('.cache')
+    }
+}
+
+module.exports = config
