@@ -1,4 +1,4 @@
-## 基于React+antd+typescript模板
+## 基于React+Antd+Typescript模板
 
 
 ### 技术栈
@@ -6,7 +6,7 @@
  - react
  - antd
  - react-router
- - ES6
+ - esNext
  - typescript
 
 
