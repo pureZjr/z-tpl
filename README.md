@@ -12,7 +12,7 @@
  - 使用EsLint检测TypeScript
  - 使用StyleLint检测和统一scss风格
  - 使用Prettier统一编码风格
- - 使用husky、commitlint、lint-staged做提交代码前的检查和规范提交记录的编写
+ - 使用husky、commitlint、lint-staged做提交代码前的检查和规范提交记录的编写（PS: 要使用huskey，先执行`npx husky install`,然后.husky相关配置放在`.husky`）
  - 使用customaddcomponents进行快捷新建模板，提高开发体验
 
 
