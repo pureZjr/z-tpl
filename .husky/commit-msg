@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# 要使用commitlint，去掉下面注释
+# yarn commitlint --edit $1

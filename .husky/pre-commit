@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+# 要使用lint-staged，去掉下面注释
+# npm run lint-staged

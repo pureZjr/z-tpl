@@ -1,5 +1,6 @@
 const TsconfigPathsWebpackPlugin = require('tsconfig-paths-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 const plugins = require('./plugins')
 const jsRules = require('./rules/jsRules')
@@ -46,6 +47,10 @@ const config = {
                 terserOptions: {
                     // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
                 }
+            }),
+            new CssMinimizerPlugin({
+                parallel: true,
+                sourceMap: true
             })
         ]
     }
